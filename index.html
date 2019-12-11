@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Meme Generator</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body onload="init()">
+    <nav>nav-bar</nav>
+    <section class="search-bar">search-bar</section>
+    <main>
+        <div class="images-container"></div>
+        <div class="canvas-container hidden">
+            <div class="canvas-toolbar">
+                <input type="text" onkeyup="ontypeTxt(value)">
+            </div>
+            <canvas id="my-canvas" width="500" height="500"></canvas>
+        </div>
+    </main>
+    <section class="about">about</section>
+    <footer>footer</footer>
+
+
+    <script src="js/meme-controller.js"></script>
+    <script src="js/meme-service.js"></script>
+</body>
+
+</html>
