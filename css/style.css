@@ -46,6 +46,16 @@ img{
     min-height: 200px;
 } 
 
+.toolbar-btn {
+    cursor: pointer;
+    height: 30px;
+    margin: 3px;
+    vertical-align: middle;
+    background-color: transparent;
+    border: none;
+}
+
+
 /* helpers */
 
 .hidden {

@@ -11,14 +11,22 @@ let gMeme = {
     txts: [
         {
             line: 'I never eat Falafel',
-            size: 20,
+            size: 50,
+            locationY: 50,
             align: 'left',
-            color: 'red'
+            color: 'white'
+        },
+        {
+            line: 'I never eat Pizza',
+            size: 50,
+            locationY: 480,
+            align: 'left',
+            color: 'white'
         }
     ]
 };
 
-function loadData(){
+function loadData() {
     createImgs();
 }
 
@@ -32,7 +40,7 @@ function createImgs() {
     gImgs.push(createimg('imgs/6.jpg', ['sad']));
     gImgs.push(createimg('imgs/7.jpg', ['happy']));
     gImgs.push(createimg('imgs/8.jpg', ['sad']));
-} 
+}
 
 function createimg(url, keywords) {
     return {
@@ -56,7 +64,7 @@ function setgMemeId(elImg) {
     gMeme.selectedImgId = img.id;
 }
 
-function getgMeme () {
+function getgMeme() {
     return gMeme;
 }
 
@@ -76,3 +84,34 @@ function getImgByID(Id) {
     })
 }
 
+function increaseLineLocation(){
+    gMeme.txts[gMeme.selectedTxtIdx].locationY--
+}
+
+function decreaseLineLocation(){
+    gMeme.txts[gMeme.selectedTxtIdx].locationY++
+}
+
+function getLineLocation(){
+    return  gMeme.txts[gMeme.selectedTxtIdx].locationY;
+}
+
+function increaseFontSize() {
+    gMeme.txts[gMeme.selectedTxtIdx].size++
+}
+
+function decreaseFontSize() {
+    gMeme.txts[gMeme.selectedTxtIdx].size--
+}
+
+function getFontSize() {
+    return gMeme.txts[gMeme.selectedTxtIdx].size;
+}
+
+function switchLine(){
+    if(gMeme.selectedTxtIdx === 0){
+        gMeme.selectedTxtIdx = 1
+    } else {
+        gMeme.selectedTxtIdx = 0
+    }
+}

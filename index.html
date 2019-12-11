@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Meme Generator</title>
+    <script src="https://kit.fontawesome.com/f14168274d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -17,6 +18,13 @@
         <div class="canvas-container hidden">
             <div class="canvas-toolbar">
                 <input type="text" onkeyup="ontypeTxt(value)">
+                <button class="line-up-btn toolbar-btn" onclick="onLineUp()">
+                    <i class="fas fa-arrow-up fa-2x"></i></button>
+                <button class="line-down-btn toolbar-btn" onclick="onLineDown()">
+                    <i class="fas fa-arrow-down fa-2x"></i></button>
+                <input class="increase-font-btn toolbar-btn" type="image" onclick="onIncreaseFont()" src="icons/increaseFont.png" />
+                <input class="decrease-font-btn toolbar-btn" type="image" onclick="onDecreaseFont()" src="icons/decreaseFont.png" />
+                <input class="switch-line-btn toolbar-btn" type="image" onclick="onSwitchLine()" src="icons/switch-lines.png" />
             </div>
             <canvas id="my-canvas" width="500" height="500"></canvas>
         </div>
