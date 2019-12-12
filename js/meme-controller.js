@@ -7,7 +7,7 @@ function init() {
 function renderImgs() {
     var imgs = getImgsToRender();
     var memes = imgs.map(function (img) {
-        return `<img src="${img.url}" alt="meme" id="${img.id}" data-id="${img.id}" onclick="onImgClick(this)">`
+        return `<img src="${img.url}" alt="meme" data-id="${img.id}" onclick="onImgClick(this)">`
     })
 
     document.querySelector('.images-container').innerHTML = memes.join('');
@@ -15,27 +15,30 @@ function renderImgs() {
 
 function renderCanvas() {
     let meme = getgMeme();
-    let elImg = document.getElementById(meme.selectedImgId)
-    let fontSize = getFontSize();
-    let memeTxt = getgMemeTxt();
-    let y = getLineLocation()
+    let memeId = meme.selectedImgId;
+    let memeTexts = meme.txts;
+    let elArr = document.querySelectorAll(`[data-id='${memeId}']`);
+    if (!elArr || elArr.length === 0) {
+        return;
+    }
+    let elImg = elArr[0];
     clearCanvas();
     drawImg(elImg);
-    drawText(memeTxt, 15, y, fontSize);
+    drawTexts(memeTexts);
 }
 
 
-function onSwitchLine(){
+function onSwitchLine() {
     switchLine();
     renderCanvas();
 }
 
-function onLineDown(){
+function onLineDown() {
     decreaseLineLocation()
     renderCanvas();
 }
 
-function onLineUp(){
+function onLineUp() {
     increaseLineLocation();
     renderCanvas();
 }
@@ -55,11 +58,15 @@ function ontypeTxt(value) {
     renderCanvas();
 }
 
-function drawText(txt, x, y, fontSize) {
-    gCtx.fillStyle = 'white'
-    gCtx.font = `${fontSize}px impact`
-    gCtx.fillText(txt, x, y);
-    gCtx.strokeText(txt, x, y);
+function drawTexts(txts) {
+
+    for (let i = 0; i < txts.length; i++) {
+        const txt = txts[i];
+        gCtx.fillStyle = txt.color;
+        gCtx.font = `${txt.size}px impact`
+        gCtx.fillText(txt.line, txt.locationX, txt.locationY);
+        gCtx.strokeText(txt.line, txt.locationX, txt.locationY);
+    }
 }
 
 function clearCanvas() {
@@ -70,7 +77,7 @@ function onImgClick(elImg) {
     setCanvas();
     moveToGenerator();
     setgMemeId(elImg);
-    drawImg(elImg);
+    renderCanvas();
 }
 
 function setCanvas() {

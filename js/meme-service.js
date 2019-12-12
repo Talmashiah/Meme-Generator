@@ -1,7 +1,5 @@
 'use strict'
 
-
-
 let gId = 1;
 let gImgs;
 
@@ -10,16 +8,18 @@ let gMeme = {
     selectedTxtIdx: 0,
     txts: [
         {
-            line: 'I never eat Falafel',
+            line: 'Add text here',
             size: 50,
             locationY: 50,
+            locationX: 15,
             align: 'left',
             color: 'white'
         },
         {
-            line: 'I never eat Pizza',
+            line: 'Add text here',
             size: 50,
             locationY: 480,
+            locationX: 15,
             align: 'left',
             color: 'white'
         }
@@ -54,9 +54,6 @@ function setgMemeTxt(value) {
     gMeme.txts[gMeme.selectedTxtIdx].line = value;
 }
 
-function getgMemeTxt() {
-    return gMeme.txts[gMeme.selectedTxtIdx].line;
-}
 
 function setgMemeId(elImg) {
     let imgId = +elImg.dataset.id;
@@ -92,20 +89,12 @@ function decreaseLineLocation(){
     gMeme.txts[gMeme.selectedTxtIdx].locationY++
 }
 
-function getLineLocation(){
-    return  gMeme.txts[gMeme.selectedTxtIdx].locationY;
-}
-
 function increaseFontSize() {
     gMeme.txts[gMeme.selectedTxtIdx].size++
 }
 
 function decreaseFontSize() {
     gMeme.txts[gMeme.selectedTxtIdx].size--
-}
-
-function getFontSize() {
-    return gMeme.txts[gMeme.selectedTxtIdx].size;
 }
 
 function switchLine(){
