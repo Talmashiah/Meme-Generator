@@ -52,7 +52,7 @@ a {
     justify-content: space-between;
 }
 
-img{
+.images-container img{
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -72,6 +72,7 @@ nav {
 .main-logo{
     height: 2.5rem;
     margin-left: 22px;
+    cursor: pointer;    
 }
 
 .main-menu{
@@ -144,7 +145,7 @@ nav li {
 .canvas-toolbar {
     display: grid;
     gap: 5px;
-    grid-template-rows: 50px 50px 50px 50px;
+    grid-template-rows: 35px 50px 50px 50px;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-template-areas: 
     "text text text text text"
@@ -154,7 +155,9 @@ nav li {
 }
 
 .toolbar-text::placeholder {
-    font-size: 1.2rem;
+    line-height: 35px;
+    padding: 5px;
+    font-size: 1.5rem;
     text-align: center;
   }
 
@@ -163,6 +166,8 @@ nav li {
     border: solid 1px #fff;
     border-radius: 10px;
     outline: none;
+    padding: 5px;
+    font-size: 1.5rem;
 }
 
 .line-up-btn{
@@ -235,11 +240,16 @@ nav li {
     font-family: montserrat,sans-serif;
 }
 
+.rounded-img-container{
+    flex: 2;
+    min-width: 150px;
+    max-width: 315px;
+    flex-grow: 2;
+}
+
 .rounded-img{
     border-radius: 50%;
-    min-width: 300px;
-    margin-left: 80px;
-    cursor: default;
+    width: 100%;
 }
 
 .about-container{
@@ -248,6 +258,8 @@ nav li {
 
 .about-context {
     margin-left: 40px;
+    flex: 3;
+    flex-grow: 3;
 }
 
 .logo-container{
@@ -277,6 +289,14 @@ nav li {
 footer{
     height: 210px;
     background-color: #ff7f00;
+}
+
+.footer-logo {
+    width: 160px;
+}
+
+footer small {
+    font-size: 0.8rem;
 }
 
 

@@ -10,7 +10,7 @@ let gMeme = {
         {
             line: 'Add text here',
             size: 50,
-            locationY: 50,
+            locationY: 60,
             locationX: 250,
             align: 'left',
             color: 'white'
@@ -18,7 +18,7 @@ let gMeme = {
         {
             line: 'Add text here',
             size: 50,
-            locationY: 490,
+            locationY: 480,
             locationX: 250,
             align: 'left',
             color: 'white'
@@ -75,15 +75,8 @@ function addLine() {
     })
 }
 
-function setgMemeTxt(value) {
-    gMeme.txts[gMeme.selectedTxtIdx].line = value;
-}
-
-
-function setgMemeId(elImg) {
-    let imgId = +elImg.dataset.id;
-    let img = getImgByID(imgId)
-    gMeme.selectedImgId = img.id;
+function getCurrTxtObj(){
+    return gMeme.txts[gMeme.selectedTxtIdx];
 }
 
 function getgMeme() {
@@ -96,7 +89,7 @@ function getImgsToRender() {
 
 function getImgUrl() {
     let img = getImgByID(gMeme.selectedImgId);
-    return img
+    return img;
 }
 
 
@@ -107,19 +100,31 @@ function getImgByID(Id) {
 }
 
 function increaseLineLocation() {
-    gMeme.txts[gMeme.selectedTxtIdx].locationY--
+    let currTxt = gMeme.txts[gMeme.selectedTxtIdx];
+    if (currTxt) {
+        currTxt.locationY--;
+    }
 }
 
 function decreaseLineLocation() {
-    gMeme.txts[gMeme.selectedTxtIdx].locationY++
+    let currTxt = gMeme.txts[gMeme.selectedTxtIdx];
+    if (currTxt) {
+        currTxt.locationY++;
+    }
 }
 
 function increaseFontSize() {
-    gMeme.txts[gMeme.selectedTxtIdx].size++
+    let currTxt = gMeme.txts[gMeme.selectedTxtIdx];
+    if (currTxt) {
+        currTxt.size++;
+    }
 }
 
 function decreaseFontSize() {
-    gMeme.txts[gMeme.selectedTxtIdx].size--
+    let currTxt = gMeme.txts[gMeme.selectedTxtIdx];
+    if (currTxt) {
+        currTxt.size--;
+    }
 }
 
 function switchLine() {
@@ -132,5 +137,22 @@ function switchLine() {
 
 
 function setTxtColor(value) {
-    gMeme.txts[gMeme.selectedTxtIdx].color = value;
+    let currTxt = gMeme.txts[gMeme.selectedTxtIdx];
+    if (currTxt) {
+        currTxt.color = value;
+    }
+}
+
+function setgMemeTxt(value) {
+    let currTxt = gMeme.txts[gMeme.selectedTxtIdx];
+    if (currTxt) {
+        currTxt.line = value;
+    }
+}
+
+
+function setgMemeId(elImg) {
+    let imgId = +elImg.dataset.id;
+    let img = getImgByID(imgId)
+    gMeme.selectedImgId = img.id;
 }

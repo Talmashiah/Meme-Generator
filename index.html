@@ -12,7 +12,8 @@
 
 <body onload="init()">
     <nav class="flex space-between align-center">
-        <input type="image" class="main-logo" src="/LOGO/LOGO.png" alt="logo">
+        <!-- <input type="image" class="main-logo" onclick="onGoToGallery()" src="/LOGO/LOGO.png" alt="logo"> -->
+        <img class="main-logo" onclick="onGoToGallery()" src="/LOGO/LOGO.png" alt="logo">
         <ul class="main-menu clean-list flex">
             <li onclick="onGoToGallery()"><a href="#">Gallery</a></li>
             <li onclick="toggleBorder(this)"><a href=#about>About</a></li>
@@ -52,7 +53,9 @@
     </main>
     <section class="about container" id="about">
         <div class="about-container flex">
-            <img class="rounded-img" src="imgs/me.jpg">
+            <div class="rounded-img-container">
+                <img class="rounded-img" src="imgs/me.jpg">
+            </div>
             <div class="about-context">
                 <h2>Tal Mashiah</h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi laboriosam vel quis excepturi, soluta
@@ -73,7 +76,7 @@
             </div>
     </section>
     <footer class="flex flex-column align-center justify-content">
-        <input type="image" class="footer-logo" src="/LOGO/footer-log.png" alt="logo">
+        <img class="footer-logo" src="/LOGO/footer-log.png" alt="logo">
         <small>all rights reserved 2019</small>
     </footer>
 

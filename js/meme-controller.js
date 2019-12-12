@@ -1,4 +1,7 @@
 
+let gCanvas;
+let gCtx;
+
 function init() {
     loadData();
     renderImgs()
@@ -25,6 +28,17 @@ function renderCanvas() {
     clearCanvas();
     drawImg(elImg);
     drawTexts(memeTexts);
+    drawBorderOnTxt();
+}
+
+function drawBorderOnTxt(){
+    let txtObj = getCurrTxtObj();
+    if (txtObj.line.length === 0) return;
+    let txtWidth = gCtx.measureText(txtObj.line).width + 20;
+    let txtHeight = txtObj.size + 10;
+    gCtx.beginPath();
+    gCtx.rect(txtObj.locationX-txtWidth/2, txtObj.locationY-txtHeight+10, txtWidth, txtHeight);
+    gCtx.stroke();
 }
 
 function onGoToGallery(){
@@ -118,7 +132,7 @@ function onImgClick(elImg) {
 }
 
 function setCanvas() {
-    elCanvasContainer = document.querySelector('.canvas-container');
+    let elCanvasContainer = document.querySelector('.canvas-container');
     elCanvasContainer.classList.remove('hidden');
     gCanvas = document.querySelector('#my-canvas');
     gCtx = gCanvas.getContext('2d');
