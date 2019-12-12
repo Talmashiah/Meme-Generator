@@ -22,9 +22,19 @@
                     <i class="fas fa-arrow-up fa-2x"></i></button>
                 <button class="line-down-btn toolbar-btn" onclick="onLineDown()">
                     <i class="fas fa-arrow-down fa-2x"></i></button>
-                <input class="increase-font-btn toolbar-btn" type="image" onclick="onIncreaseFont()" src="icons/increaseFont.png" />
-                <input class="decrease-font-btn toolbar-btn" type="image" onclick="onDecreaseFont()" src="icons/decreaseFont.png" />
-                <input class="switch-line-btn toolbar-btn" type="image" onclick="onSwitchLine()" src="icons/switch-lines.png" />
+                <input class="delete-line-btn toolbar-btn" type="image" onclick="onDeleteLine()"
+                    src="icons/trash.png" />
+                <input class="add-line-btn toolbar-btn" type="image" onclick="onAddLine()" src="icons/add.png" />
+                <input class="increase-font-btn toolbar-btn" type="image" onclick="onIncreaseFont()"
+                    src="icons/increaseFont.png" />
+                <input class="decrease-font-btn toolbar-btn" type="image" onclick="onDecreaseFont()"
+                    src="icons/decreaseFont.png" />
+                <input class="switch-line-btn toolbar-btn" type="image" onclick="onSwitchLine()"
+                    src="icons/switch-lines.png" />
+                <label for="color" class="color-btn toolbar-btn"><i class="fas fa-palette fa-lg"></i></label>
+                <input type="color" id="color" name="color" class="hidden" onchange="onChangeColor(value)">
+                <button class="download-btn toolbar-btn"><a href="#" onclick="onDownloadCanvas(this)" download="">
+                        <i class="fas fa-download fa-2x"></i></a></button>
             </div>
             <canvas id="my-canvas" width="500" height="500"></canvas>
         </div>

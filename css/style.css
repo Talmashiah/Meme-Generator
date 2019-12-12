@@ -11,13 +11,17 @@
     box-sizing: border-box;
 }
 
+html{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
 body{
     margin: 0;
 }
 
 nav {
     height: 70px;
-    background-color: orange;
+    background-color: #ff7f00;
 }
 
 .search-bar {
@@ -50,9 +54,14 @@ img{
     cursor: pointer;
     height: 30px;
     margin: 3px;
+    padding: 0;
     vertical-align: middle;
     background-color: transparent;
     border: none;
+}
+
+.switch-line-btn {
+    height: 26px;
 }
 
 

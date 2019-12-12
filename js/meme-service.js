@@ -40,6 +40,16 @@ function createImgs() {
     gImgs.push(createimg('imgs/6.jpg', ['sad']));
     gImgs.push(createimg('imgs/7.jpg', ['happy']));
     gImgs.push(createimg('imgs/8.jpg', ['sad']));
+    gImgs.push(createimg('imgs/9.jpg', ['happy']));
+    gImgs.push(createimg('imgs/10.jpg', ['sad']));
+    gImgs.push(createimg('imgs/11.jpg', ['happy']));
+    gImgs.push(createimg('imgs/12.jpg', ['sad']));
+    gImgs.push(createimg('imgs/13.jpg', ['happy']));
+    gImgs.push(createimg('imgs/14.jpg', ['sad']));
+    gImgs.push(createimg('imgs/15.jpg', ['happy']));
+    gImgs.push(createimg('imgs/16.jpg', ['sad']));
+    gImgs.push(createimg('imgs/17.jpg', ['happy']));
+    gImgs.push(createimg('imgs/18.jpg', ['sad']));
 }
 
 function createimg(url, keywords) {
@@ -48,6 +58,21 @@ function createimg(url, keywords) {
         url,
         keywords,
     }
+}
+
+function deleteLine() {
+    gMeme.txts.splice(gMeme.selectedTxtIdx, 1);
+}
+
+function addLine() {
+    gMeme.txts.push({
+        line: 'Add text here',
+        size: 50,
+        locationY: 250,
+        locationX: 15,
+        align: 'left',
+        color: 'white'
+    })
 }
 
 function setgMemeTxt(value) {
@@ -81,11 +106,11 @@ function getImgByID(Id) {
     })
 }
 
-function increaseLineLocation(){
+function increaseLineLocation() {
     gMeme.txts[gMeme.selectedTxtIdx].locationY--
 }
 
-function decreaseLineLocation(){
+function decreaseLineLocation() {
     gMeme.txts[gMeme.selectedTxtIdx].locationY++
 }
 
@@ -97,10 +122,15 @@ function decreaseFontSize() {
     gMeme.txts[gMeme.selectedTxtIdx].size--
 }
 
-function switchLine(){
-    if(gMeme.selectedTxtIdx === 0){
-        gMeme.selectedTxtIdx = 1
+function switchLine() {
+    if (gMeme.selectedTxtIdx < gMeme.txts.length - 1) {
+        gMeme.selectedTxtIdx++
     } else {
-        gMeme.selectedTxtIdx = 0
+        gMeme.selectedTxtIdx = 0;
     }
+}
+
+
+function setTxtColor(value) {
+    gMeme.txts[gMeme.selectedTxtIdx].color = value;
 }

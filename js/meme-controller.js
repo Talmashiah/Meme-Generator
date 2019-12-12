@@ -27,6 +27,29 @@ function renderCanvas() {
     drawTexts(memeTexts);
 }
 
+function onDownloadCanvas(elLink) {
+    const data = gCanvas.toDataURL()
+    elLink.href = data
+    elLink.download = 'my-img.png'
+    debugger
+}
+
+function onDeleteLine() {
+    deleteLine();
+    switchLine();
+    renderCanvas();
+}
+
+function onAddLine() {
+    addLine();
+    renderCanvas();
+}
+
+function onChangeColor(value) {
+    setTxtColor(value);
+    renderCanvas();
+}
+
 
 function onSwitchLine() {
     switchLine();
@@ -59,10 +82,10 @@ function ontypeTxt(value) {
 }
 
 function drawTexts(txts) {
-
     for (let i = 0; i < txts.length; i++) {
         const txt = txts[i];
         gCtx.fillStyle = txt.color;
+        gCtx.lineWidth = 2;
         gCtx.font = `${txt.size}px impact`
         gCtx.fillText(txt.line, txt.locationX, txt.locationY);
         gCtx.strokeText(txt.line, txt.locationX, txt.locationY);
