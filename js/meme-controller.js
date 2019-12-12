@@ -34,6 +34,9 @@ function onGoToGallery(){
     elImgsContainer.classList.remove('hidden')
     let elSearchBar = document.querySelector('.search-bar')
     elSearchBar.classList.remove('hidden');
+    elSearchBar.classList.add('flex');
+    let elAbout = document.querySelector('.about')
+    elAbout.classList.remove('hidden');
 }
 
 function onDownloadCanvas(elLink) {
@@ -128,7 +131,10 @@ function drawImg(elImg) {
 function moveToGenerator() {
     let elImgsContainer = document.querySelector('.images-container')
     let elSearchBar = document.querySelector('.search-bar')
+    let elAbout = document.querySelector('.about')
     elImgsContainer.classList.add('hidden');
     elSearchBar.classList.add('hidden');
+    elSearchBar.classList.remove('flex');
+    elAbout.classList.add('hidden');
 }
 

@@ -135,18 +135,97 @@ nav li {
 
 /* toolbar */
 
-.toolbar-btn {
-    cursor: pointer;
-    height: 30px;
-    margin: 3px;
-    padding: 0;
-    vertical-align: middle;
-    background-color: transparent;
-    border: none;
+.toolbar-container{
+    margin: 0 auto;
+    width: 350px;
+    padding-left: 50px;
 }
 
-.switch-line-btn {
-    height: 26px;
+.canvas-toolbar {
+    display: grid;
+    gap: 5px;
+    grid-template-rows: 50px 50px 50px 50px;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas: 
+    "text text text text text"
+    ".  switch addLine delete ."
+    "increase decrease color lineUp lineDown"
+    ". . download . .";
+}
+
+.toolbar-text::placeholder {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+.toolbar-text{
+    grid-area: text;
+    border: solid 1px #fff;
+    border-radius: 10px;
+    outline: none;
+}
+
+.line-up-btn{
+    grid-area: lineUp;
+    font-size: 18px;
+}
+
+.line-down-btn{
+    grid-area: lineDown;
+    font-size: 18px;
+}
+
+.delete-line-btn{
+    grid-area: delete;
+    padding: 3px;
+}
+
+.add-line-btn{
+    grid-area: addLine;
+    padding: 3px;
+}
+
+.increase-font-btn{
+    grid-area: increase;
+    font-size: 18px;
+    padding: 1px;
+}
+
+.decrease-font-btn{
+    grid-area: decrease;
+    font-size: 18px;
+    padding: 1px;
+}
+
+.switch-line-btn{
+    height: 40px;
+    grid-area: switch;
+    padding: 3px;
+}
+
+.color-btn{
+    grid-area: color;
+    font-size: 25px;
+    padding-top: 8px;
+    text-align: center;
+}
+
+.download-btn{
+    grid-area: download;
+    font-size: 18px;
+    padding: 1px;
+}
+
+
+.toolbar-btn {
+    cursor: pointer;
+    height: 45px;
+    margin: 3px;
+    border: none;
+    width: 45px;
+    background-color: #fff;
+    border: solid 1px;
+    border-radius: 8px;
 }
 
 /* about */
@@ -193,6 +272,14 @@ nav li {
     background-color: #24292e;
 }
 
+/* footer */
+   
+footer{
+    height: 210px;
+    background-color: #ff7f00;
+}
+
+
 
 /* Layout */
 
@@ -216,12 +303,8 @@ nav li {
     display: flex;
 }
 
-.flex.column {
+.flex-column {
     flex-direction: column;
-}
-
-.flex.wrap {
-    flex-wrap: wrap;
 }
 
 .space-between {
