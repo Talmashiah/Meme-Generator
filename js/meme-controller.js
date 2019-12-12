@@ -27,11 +27,19 @@ function renderCanvas() {
     drawTexts(memeTexts);
 }
 
+function onGoToGallery(){
+    let elCanvasContainer = document.querySelector('.canvas-container');
+    elCanvasContainer.classList.add('hidden');
+    let elImgsContainer = document.querySelector('.images-container');
+    elImgsContainer.classList.remove('hidden')
+    let elSearchBar = document.querySelector('.search-bar')
+    elSearchBar.classList.remove('hidden');
+}
+
 function onDownloadCanvas(elLink) {
     const data = gCanvas.toDataURL()
     elLink.href = data
     elLink.download = 'my-img.png'
-    debugger
 }
 
 function onDeleteLine() {
@@ -86,7 +94,10 @@ function drawTexts(txts) {
         const txt = txts[i];
         gCtx.fillStyle = txt.color;
         gCtx.lineWidth = 2;
+        gCtx.shadowBlur = 1;
+        gCtx.shadowColor = "black";
         gCtx.font = `${txt.size}px impact`
+        gCtx.textAlign = "center"; 
         gCtx.fillText(txt.line, txt.locationX, txt.locationY);
         gCtx.strokeText(txt.line, txt.locationX, txt.locationY);
     }

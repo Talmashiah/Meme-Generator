@@ -11,15 +11,15 @@ let gMeme = {
             line: 'Add text here',
             size: 50,
             locationY: 50,
-            locationX: 15,
+            locationX: 250,
             align: 'left',
             color: 'white'
         },
         {
             line: 'Add text here',
             size: 50,
-            locationY: 480,
-            locationX: 15,
+            locationY: 490,
+            locationX: 250,
             align: 'left',
             color: 'white'
         }
@@ -69,7 +69,7 @@ function addLine() {
         line: 'Add text here',
         size: 50,
         locationY: 250,
-        locationX: 15,
+        locationX: 250,
         align: 'left',
         color: 'white'
     })

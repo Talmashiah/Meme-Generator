@@ -5,6 +5,11 @@
     src: url(../font/impact/impact.ttf);
 }
 
+@font-face {
+    font-family: montserrat;
+    src: url(../font/Montserrat/Montserrat-Regular.ttf);
+}
+
 /* Base */
 
 *{
@@ -12,20 +17,26 @@
 }
 
 html{
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: impact;
+    color: #040a2c;
+    line-height: 20px;
 }
 
 body{
     margin: 0;
+    font-size: 1rem;
 }
 
-nav {
-    height: 70px;
-    background-color: #ff7f00;
+main{
+    background-color: #e3e3e3;
 }
 
-.search-bar {
-    height: 100px;
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
 }
 
  .images-container{
@@ -50,6 +61,80 @@ img{
     min-height: 200px;
 } 
 
+/* navbar */
+
+nav {
+    height: 80px;
+    background-color: #ff7f00;
+    font-family: montserrat,sans-serif;
+} 
+
+.main-logo{
+    height: 2.5rem;
+    margin-left: 22px;
+}
+
+.main-menu{
+    margin-right: 28px;
+}
+
+.main-menu a{
+    color: #fff;
+    letter-spacing: 0.8px;
+}
+
+.main-menu li:not(:last-child) a {
+    border-right: solid 1px #a9a9a9;
+    padding-right: 11px;
+}
+
+.main-menu a:hover{
+    color: #040a2c;
+}
+
+nav li {
+    width: 85px;
+    text-align: center;
+    line-height: 80px;
+    font-size: 1.2rem;
+}
+
+/* search-bar */
+
+.search-bar {
+    font-family: montserrat,sans-serif;
+    height: 100px;
+    font-size: 1.2rem;
+}
+
+.search-input[type="search"]
+{
+  font-size:1.2rem;
+}
+
+.search-input{
+    height: 22px;
+    border: none;
+    outline: none;
+    width: 216px;
+}
+
+.search{
+    border-bottom: solid 2px;
+    margin-left: 25px;
+    width: 236px;
+}
+
+.search-input::placeholder {
+    font-size: 1.2rem;
+  }
+
+.keywords-container {
+    margin-right: 40px;
+}
+
+/* toolbar */
+
 .toolbar-btn {
     cursor: pointer;
     height: 30px;
@@ -64,9 +149,98 @@ img{
     height: 26px;
 }
 
+/* about */
 
-/* helpers */
+.about{
+    height: 450px;
+    font-family: montserrat,sans-serif;
+}
+
+.rounded-img{
+    border-radius: 50%;
+    min-width: 300px;
+    margin-left: 80px;
+    cursor: default;
+}
+
+.about-container{
+    margin: 30px;
+}
+
+.about-context {
+    margin-left: 40px;
+}
+
+.logo-container{
+    width: 40px;
+    height: 40px;
+    background-color: #e5e5e5;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.logo-container i{
+    color: white;
+    line-height: 40px;
+}
+
+.facebook .logo-container:hover{
+    background-color: #516fad;
+}
+.github .logo-container:hover{
+    background-color: #24292e;
+}
+
+
+/* Layout */
+
+
+.container{
+    max-width: 1100px;
+    margin: auto;
+    padding: 30px;
+}
+
+/* Helpers */
 
 .hidden {
     display: none;
+}
+
+/* flex helpers */
+
+
+.flex {
+    display: flex;
+}
+
+.flex.column {
+    flex-direction: column;
+}
+
+.flex.wrap {
+    flex-wrap: wrap;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.justify-content{
+    justify-content: center;
+}
+
+
+/* list helpers */
+
+
+.clean-list {
+    padding: 0;
+    list-style-type: none;
 }
