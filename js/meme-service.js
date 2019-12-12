@@ -1,30 +1,36 @@
 'use strict'
 
+let gMeme;
 let gId = 1;
 let gImgs;
+let initialFontSize = 50;
+let initialTxt = 'Add text here';
+let initialAlign = 'center';
+let initialColor = 'white';
 
-let gMeme = {
-    selectedImgId: 1,
-    selectedTxtIdx: 0,
-    txts: [
-        {
-            line: 'Add text here',
-            size: 50,
-            locationY: 60,
-            locationX: 250,
-            align: 'left',
-            color: 'white'
-        },
-        {
-            line: 'Add text here',
-            size: 50,
-            locationY: 480,
-            locationX: 250,
-            align: 'left',
-            color: 'white'
-        }
-    ]
-};
+initgMeme();
+
+function getMemeData(){
+    return {
+        selectedImgId: 1,
+        selectedTxtIdx: 0,
+        txts: [
+            createTxtObj(250, 60),
+            createTxtObj(250, 480)
+        ]
+    }
+}
+
+function createTxtObj(locationX, locationY){
+    return {
+        line: initialTxt,
+        size: initialFontSize,
+        locationX,
+        locationY,
+        align: initialAlign,
+        color: initialColor
+    };
+}
 
 function loadData() {
     createImgs();
@@ -60,19 +66,17 @@ function createimg(url, keywords) {
     }
 }
 
+function initgMeme(){
+    gMeme = getMemeData();
+}
+
 function deleteLine() {
     gMeme.txts.splice(gMeme.selectedTxtIdx, 1);
 }
 
 function addLine() {
-    gMeme.txts.push({
-        line: 'Add text here',
-        size: 50,
-        locationY: 250,
-        locationX: 250,
-        align: 'left',
-        color: 'white'
-    })
+    gMeme.txts.push(createTxtObj(250, 250));
+    gMeme.selectedTxtIdx = gMeme.txts.length-1;
 }
 
 function getCurrTxtObj(){
@@ -81,6 +85,14 @@ function getCurrTxtObj(){
 
 function getgMeme() {
     return gMeme;
+}
+
+function getInitialFontSize(){
+    return initialFontSize;
+}
+
+function getInitialtxt(){
+    return initialTxt;
 }
 
 function getImgsToRender() {
