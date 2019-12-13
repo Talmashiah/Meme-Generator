@@ -11,9 +11,12 @@
 </head>
 
 <body onload="init()">
+    <div class="screen" onclick="toggleMenu()"></div>
+
     <nav class="flex space-between align-center">
         <!-- <input type="image" class="main-logo" onclick="onGoToGallery()" src="/LOGO/LOGO.png" alt="logo"> -->
         <img class="main-logo" onclick="onGoToGallery()" src="LOGO/LOGO.png" alt="logo">
+        <button id="menu-btn" class="menu-btn" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
         <ul class="main-menu clean-list flex">
             <li onclick="onGoToGallery()"><a href="#">Gallery</a></li>
             <li onclick="onGoToGallery()"><a href=#about>About</a></li>

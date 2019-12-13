@@ -23,9 +23,9 @@ function renderImgs(isFlitered = false) {
 
 function renderKeywords() {
     strHtml = '';
-    let keywords = getKeywordsToRender().slice(0, 7);
+    let keywords = getKeywordsToRender().slice(0, 5);
     keywords.sort(()=> 0.5 - Math.random());
-    for (let i = 0; i < 7; i++) {
+    for (let i = 0; i < 5; i++) {
         const keyword = keywords[i];
         strHtml+=`<span class="keyword" style="font-size:${keyword.count*4}px" onclick="onKeywordClick('${keyword.name}')">${keyword.name} </span>`;
     }
@@ -90,6 +90,10 @@ function onGoToGallery() {
     let elAbout = document.querySelector('.about')
     elAbout.classList.remove('hidden');
     renderImgs();
+}
+
+function toggleMenu() {
+    document.body.classList.toggle('menu-open');
 }
 
 function onDownloadCanvas(elLink) {
