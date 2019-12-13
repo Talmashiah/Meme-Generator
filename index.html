@@ -16,12 +16,12 @@
         <img class="main-logo" onclick="onGoToGallery()" src="/LOGO/LOGO.png" alt="logo">
         <ul class="main-menu clean-list flex">
             <li onclick="onGoToGallery()"><a href="#">Gallery</a></li>
-            <li onclick="toggleBorder(this)"><a href=#about>About</a></li>
+            <li onclick="onGoToGallery()"><a href=#about>About</a></li>
     </nav>
     <section class="search-bar flex space-between align-center">
-        <span class="search"><input type="search" class="search-input" name="" id=""
+        <span class="search"><input type="search" class="search-input" onkeyup="onSearchImgs(value)" name="" id=""
                 placeholder="Enter search keywords"><i class="fas fa-search"></i></span>
-        <div class="keywords-container">bla bla bla bla bla bla bla</div>
+        <div class="keywords-container"></div>
     </section>
     <main>
         <div class="images-container container"></div>
@@ -39,6 +39,13 @@
                     <input class="align-start-btn toolbar-btn" type="image" onclick="onAlignStart()" src="icons/align-to-left.png" />
                     <input class="align-center-btn toolbar-btn" type="image" onclick="onAlignCenter()" src="icons/center-text-alignment.png" />
                     <input class="align-end-btn toolbar-btn" type="image" onclick="onAlignEnd()" src="icons/align-to-right.png" />
+                    <select class="font-select-btn" name="font" id="font-select" onchange="onFontChange(value)">
+                        <option value="impact">impact</option>
+                        <option value="montserrat">montserrat</option>
+                        <option value="indie">indie</option>
+                        <option value="oswald">oswald</option>
+                        <option value="sulphur">sulphur</option>
+                    </select>
                     <input class="increase-font-btn toolbar-btn" type="image" onclick="onIncreaseFont()"
                         src="icons/increaseFont.png" />
                     <input class="decrease-font-btn toolbar-btn" type="image" onclick="onDecreaseFont()"
@@ -55,7 +62,7 @@
         </div>
     </main>
     <section class="about container" id="about">
-        <div class="about-container flex">
+        <div class="about-container flex justify-content">
             <div class="rounded-img-container">
                 <img class="rounded-img" src="imgs/me.jpg">
             </div>

@@ -7,10 +7,13 @@ let initialFontSize = 50;
 let initialTxt = 'Add text here';
 let initialAlign = 'center';
 let initialColor = 'white';
+let initialFontFamily = 'impact';
+let gKeywords;
+let gFilterdImgs;
 
 initgMeme();
 
-function getMemeData(){
+function getMemeData() {
     return {
         selectedImgId: 1,
         selectedTxtIdx: 0,
@@ -21,7 +24,7 @@ function getMemeData(){
     }
 }
 
-function createTxtObj(locationX, locationY){
+function createTxtObj(locationX, locationY) {
     return {
         line: initialTxt,
         size: initialFontSize,
@@ -34,31 +37,35 @@ function createTxtObj(locationX, locationY){
 
 function loadData() {
     createImgs();
+    setgKeywords();
 }
 
 function createImgs() {
     gImgs = [];
-    gImgs.push(createimg('imgs/1.jpg', ['happy']));
-    gImgs.push(createimg('imgs/2.jpg', ['sad']));
-    gImgs.push(createimg('imgs/3.jpg', ['happy']));
-    gImgs.push(createimg('imgs/4.jpg', ['sad']));
-    gImgs.push(createimg('imgs/5.jpg', ['happy']));
-    gImgs.push(createimg('imgs/6.jpg', ['sad']));
-    gImgs.push(createimg('imgs/7.jpg', ['happy']));
-    gImgs.push(createimg('imgs/8.jpg', ['sad']));
-    gImgs.push(createimg('imgs/9.jpg', ['happy']));
-    gImgs.push(createimg('imgs/10.jpg', ['sad']));
-    gImgs.push(createimg('imgs/11.jpg', ['happy']));
-    gImgs.push(createimg('imgs/12.jpg', ['sad']));
-    gImgs.push(createimg('imgs/13.jpg', ['happy']));
-    gImgs.push(createimg('imgs/14.jpg', ['sad']));
-    gImgs.push(createimg('imgs/15.jpg', ['happy']));
-    gImgs.push(createimg('imgs/16.jpg', ['sad']));
-    gImgs.push(createimg('imgs/17.jpg', ['happy']));
-    gImgs.push(createimg('imgs/18.jpg', ['sad']));
+    gImgs.push(createImg('imgs/1.jpg', ['movie', 'serious']));
+    gImgs.push(createImg('imgs/2.jpg', ['movie', 'funny', 'happy']));
+    gImgs.push(createImg('imgs/3.jpg', ['mad', 'politics']));
+    gImgs.push(createImg('imgs/4.jpg', ['animals', 'cute']));
+    gImgs.push(createImg('imgs/5.jpg', ['cute']));
+    gImgs.push(createImg('imgs/6.jpg', ['serious', 'success']));
+    gImgs.push(createImg('imgs/7.jpg', ['animals', 'sleep']));
+    gImgs.push(createImg('imgs/8.jpg', ['sarcasm', 'funny']));
+    gImgs.push(createImg('imgs/9.jpg', ['evil', 'funny']));
+    gImgs.push(createImg('imgs/10.jpg', ['funny', 'derious']));
+    gImgs.push(createImg('imgs/11.jpg', ['stoned','funny']));
+    gImgs.push(createImg('imgs/12.jpg', ['funny','happy']));
+    gImgs.push(createImg('imgs/13.jpg', ['happy','funny']));
+    gImgs.push(createImg('imgs/14.jpg', ['gay']));
+    gImgs.push(createImg('imgs/15.jpg', ['serious']));
+    gImgs.push(createImg('imgs/16.jpg', ['funny']));
+    gImgs.push(createImg('imgs/17.jpg', ['politics', 'serious']));
+    gImgs.push(createImg('imgs/18.jpg', ['movie', 'happy', 'sad']));
+    gImgs.push(createImg('imgs/19.jpg', ['gay', 'happy', 'funny']));
+    gImgs.push(createImg('imgs/20.jpg', ['gay', 'animals', 'cute']));
+    gImgs.push(createImg('imgs/21.jpg', ['gay', 'serious', 'sad','funny']));
 }
 
-function createimg(url, keywords) {
+function createImg(url, keywords) {
     return {
         id: gId++,
         url,
@@ -66,11 +73,71 @@ function createimg(url, keywords) {
     }
 }
 
-function initgMeme(){
+function initgMeme() {
     gMeme = getMemeData();
 }
 
-function setAlignEnd(){
+function filterImgsBySearch(value) {
+    gFilterdImgs = [];
+    let searchInput = value.toLowerCase();
+    gImgs.forEach(img => {
+        img.keywords.forEach(keyword => {
+            if(keyword.includes(searchInput)){
+                gFilterdImgs.push(img);
+            }
+        });
+    });
+
+}
+
+
+function filterImgsByKeyword(keyword) {
+    gFilterdImgs = gImgs.filter(img => img.keywords.includes(keyword));
+}
+
+function getFilterImgsToRender() {
+    return gFilterdImgs;
+}
+
+function getImgsToRender() {
+    return gImgs;
+}
+
+function concatAllKeywards() {
+    var imgsKeywords = [];
+    for (var i = 0; i < gImgs.length; i++) {
+        imgsKeywords = imgsKeywords.concat(gImgs[i].keywords);
+    }
+    return imgsKeywords;
+}
+
+function setgKeywords(){
+    gKeywords = [];
+    let keywords = concatAllKeywards();
+
+    for (let i = 0; i < keywords.length; i++) {
+        let KeywordObj = gKeywords.find(function (obj) {
+            return obj.name === keywords[i];
+        });
+        if(KeywordObj){
+            KeywordObj.count++;
+        }
+        else{
+            gKeywords.push({name:keywords[i],count:1});
+        }
+    }
+    gKeywords.sort((a, b) => (a.count < b.count) ? 1 : -1);
+}
+
+function setInitialFontFamily(fontFamily) {
+    initialFontFamily = fontFamily;
+}
+
+function getInitialFontFamily() {
+    return initialFontFamily;
+}
+
+function setAlignEnd() {
     let currTxt = gMeme.txts[gMeme.selectedTxtIdx];
     if (currTxt) {
         currTxt.locationX = 485;
@@ -78,7 +145,7 @@ function setAlignEnd(){
     }
 }
 
-function setAlignCenter(){
+function setAlignCenter() {
     let currTxt = gMeme.txts[gMeme.selectedTxtIdx];
     if (currTxt) {
         currTxt.locationX = 250;
@@ -86,7 +153,7 @@ function setAlignCenter(){
     }
 }
 
-function setAlignStart(){
+function setAlignStart() {
     let currTxt = gMeme.txts[gMeme.selectedTxtIdx];
     if (currTxt) {
         currTxt.locationX = 15;
@@ -101,10 +168,10 @@ function deleteLine() {
 
 function addLine() {
     gMeme.txts.push(createTxtObj(250, 250));
-    gMeme.selectedTxtIdx = gMeme.txts.length-1;
+    gMeme.selectedTxtIdx = gMeme.txts.length - 1;
 }
 
-function getCurrTxtObj(){
+function getCurrTxtObj() {
     return gMeme.txts[gMeme.selectedTxtIdx];
 }
 
@@ -112,12 +179,12 @@ function getgMeme() {
     return gMeme;
 }
 
-function getInitialtxt(){
+function getInitialtxt() {
     return initialTxt;
 }
 
-function getImgsToRender() {
-    return gImgs;
+function getKeywordsToRender() {
+    return gKeywords;
 }
 
 function getImgUrl() {
@@ -135,28 +202,28 @@ function getImgByID(Id) {
 function increaseLineLocation() {
     let currTxt = gMeme.txts[gMeme.selectedTxtIdx];
     if (currTxt) {
-        currTxt.locationY-=5;
+        currTxt.locationY -= 5;
     }
 }
 
 function decreaseLineLocation() {
     let currTxt = gMeme.txts[gMeme.selectedTxtIdx];
     if (currTxt) {
-        currTxt.locationY+=5;
+        currTxt.locationY += 5;
     }
 }
 
 function increaseFontSize() {
     let currTxt = gMeme.txts[gMeme.selectedTxtIdx];
     if (currTxt) {
-        currTxt.size+=2;
+        currTxt.size += 2;
     }
 }
 
 function decreaseFontSize() {
     let currTxt = gMeme.txts[gMeme.selectedTxtIdx];
     if (currTxt) {
-        currTxt.size-=2;
+        currTxt.size -= 2;
     }
 }
 

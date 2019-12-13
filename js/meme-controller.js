@@ -4,16 +4,32 @@ let gCtx;
 
 function init() {
     loadData();
-    renderImgs()
+    renderImgs();
+    renderKeywords();
 }
 
-function renderImgs() {
-    var imgs = getImgsToRender();
+function renderImgs(isFlitered = false) {
+    if(!isFlitered){
+        var imgs = getImgsToRender();
+    } else {
+        var imgs = getFilterImgsToRender();
+    }
     var memes = imgs.map(function (img) {
         return `<img src="${img.url}" alt="meme" data-id="${img.id}" onclick="onImgClick(this)">`
     })
 
     document.querySelector('.images-container').innerHTML = memes.join('');
+}
+
+function renderKeywords() {
+    strHtml = '';
+    let keywords = getKeywordsToRender().slice(0, 7);
+    keywords.sort(()=> 0.5 - Math.random());
+    for (let i = 0; i < 7; i++) {
+        const keyword = keywords[i];
+        strHtml+=`<span class="keyword" style="font-size:${keyword.count*4}px" onclick="onKeywordClick('${keyword.name}')">${keyword.name} </span>`;
+    }
+    document.querySelector('.keywords-container').innerHTML = strHtml;
 }
 
 function renderCanvas(drawBorder = true) {
@@ -29,6 +45,15 @@ function renderCanvas(drawBorder = true) {
     drawImg(elImg);
     drawTexts(memeTexts, meme.selectedTxtIdx);
     if (drawBorder) drawBorderOnTxt();
+}
+
+function onSearchImgs(value){
+    filterImgsBySearch(value);
+    if(value){
+        renderImgs(true);
+    } else {
+        renderImgs();
+    }
 }
 
 function drawBorderOnTxt() {
@@ -64,6 +89,7 @@ function onGoToGallery() {
     elSearchBar.classList.add('flex');
     let elAbout = document.querySelector('.about')
     elAbout.classList.remove('hidden');
+    renderImgs();
 }
 
 function onDownloadCanvas(elLink) {
@@ -72,6 +98,16 @@ function onDownloadCanvas(elLink) {
     elLink.href = data;
     elLink.download = 'my-img.png';
     drawBorderOnTxt();
+}
+
+function onKeywordClick(keyword){
+    filterImgsByKeyword(keyword);
+    renderImgs(true);
+}
+
+function onFontChange(fontFamily){
+    setInitialFontFamily(fontFamily);
+    renderCanvas();
 }
 
 function onAlignEnd(){
@@ -155,11 +191,16 @@ function drawTexts(txts, currentTxtId) {
 }
 
 function drawText(txt) {
+    let fontFamily = getInitialFontFamily();
     gCtx.fillStyle = txt.color;
-    gCtx.lineWidth = 2;
+    if(fontFamily === 'impact'){
+        gCtx.lineWidth = 2;
+    } else {
+        gCtx.lineWidth = 1;
+    }
     gCtx.shadowBlur = 1;
     gCtx.shadowColor = "black";
-    gCtx.font = `${txt.size}px impact`
+    gCtx.font = `${txt.size}px ${fontFamily}`
     gCtx.textAlign = txt.align;
     gCtx.fillText(txt.line, txt.locationX, txt.locationY);
     gCtx.strokeText(txt.line, txt.locationX, txt.locationY);

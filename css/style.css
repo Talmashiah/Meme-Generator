@@ -10,6 +10,21 @@
     src: url(../font/Montserrat/Montserrat-Regular.ttf);
 }
 
+@font-face {
+    font-family: indie;
+    src: url(../font/Indie_Flower/IndieFlower-Regular.ttf);
+}
+
+@font-face {
+    font-family: oswald;
+    src: url(../font/Oswald/Oswald-VariableFont_wght.ttf);
+}
+
+@font-face {
+    font-family: sulphur;
+    src: url(../font/Sulphur_Point/SulphurPoint-Regular.ttf);
+}
+
 /* Base */
 
 *{
@@ -105,7 +120,7 @@ nav li {
 .search-bar {
     font-family: montserrat,sans-serif;
     height: 100px;
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 .search-input[type="search"]
@@ -132,6 +147,13 @@ nav li {
 
 .keywords-container {
     margin-right: 40px;
+    display: flex;
+}
+
+.keywords-container .keyword {
+    cursor: pointer;
+    font-size: 5px;
+    margin-right: 10px;
 }
 
 /* toolbar */
@@ -144,14 +166,14 @@ nav li {
 
 .canvas-toolbar {
     display: grid;
-    gap: 20px 10px;
+    gap: 20px 15px;
     grid-template-rows: repeat(5, 50px);
     grid-template-columns: repeat(5, 50px);
     grid-template-areas:
         "text text text text text"
         ". switch addLine delete ."
         "increase decrease color lineUp lineDown"
-        ". alignStart alignCenter alignEnd ."
+        "fontSelect fontSelect alignStart alignCenter alignEnd"
         ". . download . .";
 }
 
@@ -180,6 +202,16 @@ nav li {
     border: solid 2px white;
     border-radius: 12px;
 }
+
+.font-select-btn{
+    grid-area: fontSelect;
+    border: solid 1px #fff;
+    border-radius: 10px;
+    outline: none;
+    padding: 5px;
+    font-size: 1.5rem;
+}
+
 
 .align-end-btn{
     grid-area: alignEnd;
@@ -246,14 +278,14 @@ nav li {
 /* about */
 
 .about{
-    height: 450px;
+    height: 400px;
     font-family: montserrat,sans-serif;
 }
 
 .rounded-img-container{
     flex: 2;
     min-width: 150px;
-    max-width: 315px;
+    max-width: 250px;
     flex-grow: 2;
 }
 
@@ -267,6 +299,7 @@ nav li {
 }
 
 .about-context {
+    max-width: 400px;
     margin-left: 40px;
     flex: 3;
     flex-grow: 3;
@@ -297,7 +330,7 @@ nav li {
 /* footer */
    
 footer{
-    height: 210px;
+    height: 200px;
     background-color: #ff7f00;
 }
 
