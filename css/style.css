@@ -144,14 +144,15 @@ nav li {
 
 .canvas-toolbar {
     display: grid;
-    gap: 5px;
-    grid-template-rows: 35px 50px 50px 50px;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-areas: 
-    "text text text text text"
-    ".  switch addLine delete ."
-    "increase decrease color lineUp lineDown"
-    ". . download . .";
+    gap: 20px 10px;
+    grid-template-rows: repeat(5, 50px);
+    grid-template-columns: repeat(5, 50px);
+    grid-template-areas:
+        "text text text text text"
+        ". switch addLine delete ."
+        "increase decrease color lineUp lineDown"
+        ". alignStart alignCenter alignEnd ."
+        ". . download . .";
 }
 
 .toolbar-text::placeholder {
@@ -168,6 +169,28 @@ nav li {
     outline: none;
     padding: 5px;
     font-size: 1.5rem;
+}
+
+.toolbar-btn {
+    cursor: pointer;
+    height: 50px;
+    border: none;
+    width: 50px;
+    background-color: #fff;
+    border: solid 2px white;
+    border-radius: 12px;
+}
+
+.align-end-btn{
+    grid-area: alignEnd;
+}
+
+.align-center-btn{
+    grid-area: alignCenter;
+}
+
+.align-start-btn{
+    grid-area: alignStart;
 }
 
 .line-up-btn{
@@ -203,7 +226,6 @@ nav li {
 }
 
 .switch-line-btn{
-    height: 40px;
     grid-area: switch;
     padding: 3px;
 }
@@ -211,7 +233,7 @@ nav li {
 .color-btn{
     grid-area: color;
     font-size: 25px;
-    padding-top: 8px;
+    padding-top: 11px;
     text-align: center;
 }
 
@@ -219,18 +241,6 @@ nav li {
     grid-area: download;
     font-size: 18px;
     padding: 1px;
-}
-
-
-.toolbar-btn {
-    cursor: pointer;
-    height: 45px;
-    margin: 3px;
-    border: none;
-    width: 45px;
-    background-color: #fff;
-    border: solid 1px;
-    border-radius: 8px;
 }
 
 /* about */

@@ -70,6 +70,31 @@ function initgMeme(){
     gMeme = getMemeData();
 }
 
+function setAlignEnd(){
+    let currTxt = gMeme.txts[gMeme.selectedTxtIdx];
+    if (currTxt) {
+        currTxt.locationX = 485;
+        currTxt.align = 'end'
+    }
+}
+
+function setAlignCenter(){
+    let currTxt = gMeme.txts[gMeme.selectedTxtIdx];
+    if (currTxt) {
+        currTxt.locationX = 250;
+        currTxt.align = 'center'
+    }
+}
+
+function setAlignStart(){
+    let currTxt = gMeme.txts[gMeme.selectedTxtIdx];
+    if (currTxt) {
+        currTxt.locationX = 15;
+        currTxt.align = 'start'
+    }
+}
+
+
 function deleteLine() {
     gMeme.txts.splice(gMeme.selectedTxtIdx, 1);
 }
@@ -85,10 +110,6 @@ function getCurrTxtObj(){
 
 function getgMeme() {
     return gMeme;
-}
-
-function getInitialFontSize(){
-    return initialFontSize;
 }
 
 function getInitialtxt(){
@@ -114,28 +135,28 @@ function getImgByID(Id) {
 function increaseLineLocation() {
     let currTxt = gMeme.txts[gMeme.selectedTxtIdx];
     if (currTxt) {
-        currTxt.locationY--;
+        currTxt.locationY-=5;
     }
 }
 
 function decreaseLineLocation() {
     let currTxt = gMeme.txts[gMeme.selectedTxtIdx];
     if (currTxt) {
-        currTxt.locationY++;
+        currTxt.locationY+=5;
     }
 }
 
 function increaseFontSize() {
     let currTxt = gMeme.txts[gMeme.selectedTxtIdx];
     if (currTxt) {
-        currTxt.size++;
+        currTxt.size+=2;
     }
 }
 
 function decreaseFontSize() {
     let currTxt = gMeme.txts[gMeme.selectedTxtIdx];
     if (currTxt) {
-        currTxt.size--;
+        currTxt.size-=2;
     }
 }
 

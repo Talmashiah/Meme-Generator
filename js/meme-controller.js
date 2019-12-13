@@ -27,20 +27,31 @@ function renderCanvas(drawBorder = true) {
     let elImg = elArr[0];
     clearCanvas();
     drawImg(elImg);
-    drawTexts(memeTexts);
-    if(drawBorder) drawBorderOnTxt();
+    drawTexts(memeTexts, meme.selectedTxtIdx);
+    if (drawBorder) drawBorderOnTxt();
 }
 
 function drawBorderOnTxt() {
     let txtObj = getCurrTxtObj();
-    let fontSizeDelta = txtObj.size - getInitialFontSize();
+    let txtWidth = gCtx.measureText(txtObj.line).width + 20;
+    if (!txtObj) return;
     if (txtObj.line.length === 0) return;
-    let txtWidth = gCtx.measureText(txtObj.line).width;
-    let calctxtWidth = txtWidth + 20 + (txtObj.line.length * fontSizeDelta * 0.5);
     let txtHeight = txtObj.size + 10;
+    gCtx.save();
     gCtx.beginPath();
-    gCtx.rect(txtObj.locationX - calctxtWidth / 2, txtObj.locationY - txtHeight + 10, calctxtWidth, txtHeight);
+    gCtx.lineWidth = "1";
+    gCtx.strokeStyle = "black";
+    gCtx.fillStyle = "#0019ff14";
+    if(txtObj.align === 'start'){
+        gCtx.rect(txtObj.locationX - 10, txtObj.locationY - txtHeight + 10, txtWidth, txtHeight);
+    } else if (txtObj.align === 'center'){
+        gCtx.rect(txtObj.locationX - txtWidth / 2, txtObj.locationY - txtHeight + 10, txtWidth, txtHeight);
+    } else{
+        gCtx.rect(txtObj.locationX - txtWidth + 10, txtObj.locationY - txtHeight + 10, txtWidth, txtHeight);
+    }
+    gCtx.fill();
     gCtx.stroke();
+    gCtx.restore();
 }
 
 function onGoToGallery() {
@@ -61,6 +72,21 @@ function onDownloadCanvas(elLink) {
     elLink.href = data;
     elLink.download = 'my-img.png';
     drawBorderOnTxt();
+}
+
+function onAlignEnd(){
+    setAlignEnd();
+    renderCanvas();
+}
+
+function onAlignCenter(){
+    setAlignCenter();
+    renderCanvas();
+}
+
+function onAlignStart(){
+    setAlignStart();
+    renderCanvas();
 }
 
 function onDeleteLine() {
@@ -85,6 +111,7 @@ function onSwitchLine() {
     switchLine();
     let initialtxt = getInitialtxt();
     let txtObj = getCurrTxtObj();
+    if (!txtObj) return;
     if (initialtxt !== txtObj.line) {
         document.querySelector('.toolbar-text').value = txtObj.line;
     } else {
@@ -118,18 +145,24 @@ function ontypeTxt(value) {
     renderCanvas();
 }
 
-function drawTexts(txts) {
+function drawTexts(txts, currentTxtId) {
     for (let i = 0; i < txts.length; i++) {
-        const txt = txts[i];
-        gCtx.fillStyle = txt.color;
-        gCtx.lineWidth = 2;
-        gCtx.shadowBlur = 1;
-        gCtx.shadowColor = "black";
-        gCtx.font = `${txt.size}px impact`
-        gCtx.textAlign = "center";
-        gCtx.fillText(txt.line, txt.locationX, txt.locationY);
-        gCtx.strokeText(txt.line, txt.locationX, txt.locationY);
+        if (i !== currentTxtId) {
+            drawText(txts[i]);
+        }
     }
+    drawText(txts[currentTxtId]);
+}
+
+function drawText(txt) {
+    gCtx.fillStyle = txt.color;
+    gCtx.lineWidth = 2;
+    gCtx.shadowBlur = 1;
+    gCtx.shadowColor = "black";
+    gCtx.font = `${txt.size}px impact`
+    gCtx.textAlign = txt.align;
+    gCtx.fillText(txt.line, txt.locationX, txt.locationY);
+    gCtx.strokeText(txt.line, txt.locationX, txt.locationY);
 }
 
 function clearTextInput() {
