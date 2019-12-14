@@ -42,6 +42,10 @@ body{
     font-size: 1rem;
 }
 
+header{
+    background-color: #005e90;
+}
+
 main{
     background-color: #e3e3e3;
 }
@@ -80,18 +84,12 @@ a {
 
 nav {
     height: 80px;
-    background-color: #005e90;
     font-family: montserrat,sans-serif;
 } 
 
 .main-logo{
     height: 2.5rem;
-    margin-left: 22px;
     cursor: pointer;    
-}
-
-.main-menu{
-    margin-right: 28px;
 }
 
 .main-menu a{
@@ -101,7 +99,7 @@ nav {
 
 .main-menu li:not(:last-child) a {
     border-right: solid 1px #a9a9a9;
-    padding-right: 11px;
+    padding-right: 16px;
 }
 
 .main-menu a:hover{
@@ -110,16 +108,15 @@ nav {
 
 nav li {
     width: 85px;
-    text-align: center;
+    text-align: end;
     line-height: 80px;
     font-size: 1.2rem;
 }
 
 .menu-btn{
     display: none;
-    margin-right: 25px;
     cursor: pointer;
-    font-size: 1.5rem;
+    font-size: 1.9rem;
     background-color: transparent;
     border: none;
     color: #ffffff;
@@ -147,7 +144,6 @@ nav li {
 
 .search{
     border-bottom: solid 2px;
-    margin-left: 25px;
     width: 236px;
 }
 
@@ -156,7 +152,7 @@ nav li {
   }
 
 .keywords-container {
-    margin-right: 40px;
+    /* margin-right: 40px; */
     display: flex;
 }
 
@@ -169,12 +165,14 @@ nav li {
     margin-right: 0;
 }
 
-/* toolbar */
+/* canvas */
+
+.canvas-container {
+    justify-content: space-around;
+}
 
 .toolbar-container{
-    margin: 0 auto;
-    width: 350px;
-    padding-left: 50px;
+    padding-left: 30px;
 }
 
 .canvas-toolbar {
@@ -358,21 +356,27 @@ footer small {
 
 /* Media Queries */
 
+@media (max-width: 1200px) {
+    #my-canvas {
+        width: 400px; 
+    }
+}    
+
 
 @media (max-width: 1100px) {
 
-    .search-bar {
+    .search-bar.container {
         flex-direction: column;
-        
+        padding: 0px;
     }
 
     .search-bar .search {
-        margin-top: 17px;
+        margin-top: 14px;
         margin-left: 0;
     }
 
     .keywords-container {
-        margin-bottom: 17px;
+        margin-bottom: 19px;
         margin-right: 0;
     }
 
@@ -408,11 +412,32 @@ footer small {
     }
 }
 
+@media (max-width: 800px) {
+
+    .canvas-container {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+    #my-canvas {
+        width: 375px;
+        margin-bottom: 32px;
+    }
+
+    .toolbar-container {
+        padding-left: 0;
+    }
+
+}
 @media (max-width: 700px) {
+    
+    nav.container {
+        padding: 10px;
+    }
+
     .menu-btn{
         display: block;
-        margin-right: 15px;
-        margin-bottom: 4px;
     }
 
     .main-content {
@@ -456,10 +481,6 @@ footer small {
 
 @media (max-width: 615px) {
 
-    .main-logo {
-        height: 2rem;
-    }
-
     .images-container {
         height: auto;
         display: grid;
@@ -474,6 +495,14 @@ footer small {
 }
 
 @media (max-width: 515px) {
+
+    .main-logo {
+        height: 2rem;
+    } 
+
+    .menu-btn {
+        font-size: 1.7rem;
+    }
 
     .images-container img {
         min-width: 100px;
@@ -490,6 +519,10 @@ footer small {
 
     .about {
         height: 450px;
+    }
+
+    #my-canvas {
+        width: 325px;
     }
 }
 

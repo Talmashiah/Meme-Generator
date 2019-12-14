@@ -12,16 +12,17 @@
 
 <body onload="init()">
     <div class="screen" onclick="toggleMenu()"></div>
-
-    <nav class="flex space-between align-center">
-        <!-- <input type="image" class="main-logo" onclick="onGoToGallery()" src="/LOGO/LOGO.png" alt="logo"> -->
-        <img class="main-logo" onclick="onGoToGallery()" src="LOGO/LOGO.png" alt="logo">
-        <button id="menu-btn" class="menu-btn" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
-        <ul class="main-menu clean-list flex">
-            <li onclick="onGoToGallery()"><a href="#">Gallery</a></li>
-            <li onclick="onGoToGallery()"><a href=#about>About</a></li>
-    </nav>
-    <section class="search-bar flex space-between align-center">
+    <header>
+        <nav class="flex space-between align-center container">
+            <!-- <input type="image" class="main-logo" onclick="onGoToGallery()" src="/LOGO/LOGO.png" alt="logo"> -->
+            <img class="main-logo" onclick="onGoToGallery()" src="LOGO/LOGO.png" alt="logo">
+            <button id="menu-btn" class="menu-btn" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+            <ul class="main-menu clean-list flex">
+                <li onclick="onGoToGallery(),toggleMenu()"><a href="#">Gallery</a></li>
+                <li onclick="onGoToGallery(),toggleMenu()"><a href=#about>About</a></li>
+        </nav>
+    </header>
+    <section class="search-bar flex space-between align-center container">
         <span class="search"><input type="search" class="search-input" onkeyup="onSearchImgs(value)" name="" id=""
                 placeholder="Search by keywords"><i class="fas fa-search"></i></span>
         <div class="keywords-container"></div>
@@ -39,9 +40,12 @@
                     <input class="delete-line-btn toolbar-btn" type="image" onclick="onDeleteLine()"
                         src="icons/trash.png" />
                     <input class="add-line-btn toolbar-btn" type="image" onclick="onAddLine()" src="icons/add.png" />
-                    <input class="align-start-btn toolbar-btn" type="image" onclick="onAlignStart()" src="icons/align-to-left.png" />
-                    <input class="align-center-btn toolbar-btn" type="image" onclick="onAlignCenter()" src="icons/center-text-alignment.png" />
-                    <input class="align-end-btn toolbar-btn" type="image" onclick="onAlignEnd()" src="icons/align-to-right.png" />
+                    <input class="align-start-btn toolbar-btn" type="image" onclick="onAlignStart()"
+                        src="icons/align-to-left.png" />
+                    <input class="align-center-btn toolbar-btn" type="image" onclick="onAlignCenter()"
+                        src="icons/center-text-alignment.png" />
+                    <input class="align-end-btn toolbar-btn" type="image" onclick="onAlignEnd()"
+                        src="icons/align-to-right.png" />
                     <select class="font-select-btn" name="font" id="font-select" onchange="onFontChange(value)">
                         <option value="impact">impact</option>
                         <option value="montserrat">montserrat</option>
