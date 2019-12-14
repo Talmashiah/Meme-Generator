@@ -343,6 +343,9 @@ nav li {
 footer{
     height: 200px;
     background-color: #005e90;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
 
 .footer-logo {
@@ -465,6 +468,7 @@ footer small {
     .main-menu li{
         width: 100%;
         height: auto;
+        text-align: center;
     }
 
     .main-menu a {
@@ -580,6 +584,15 @@ footer small {
     max-width: 1100px;
     margin: auto;
     padding: 30px;
+}
+
+#page-container {
+    position: relative;
+    min-height: 100vh;
+}
+
+#content-wrap {
+    padding-bottom: 200px;   
 }
 
 /* screens */
