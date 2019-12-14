@@ -51,7 +51,7 @@ function createImgs() {
     gImgs.push(createImg('imgs/7.jpg', ['animals', 'sleep']));
     gImgs.push(createImg('imgs/8.jpg', ['sarcasm', 'funny']));
     gImgs.push(createImg('imgs/9.jpg', ['evil', 'funny']));
-    gImgs.push(createImg('imgs/10.jpg', ['funny', 'derious']));
+    gImgs.push(createImg('imgs/10.jpg', ['funny', 'serious']));
     gImgs.push(createImg('imgs/11.jpg', ['stoned','funny']));
     gImgs.push(createImg('imgs/12.jpg', ['funny','happy']));
     gImgs.push(createImg('imgs/13.jpg', ['happy','funny']));
@@ -63,6 +63,25 @@ function createImgs() {
     gImgs.push(createImg('imgs/19.jpg', ['gay', 'happy', 'funny']));
     gImgs.push(createImg('imgs/20.jpg', ['gay', 'animals', 'cute']));
     gImgs.push(createImg('imgs/21.jpg', ['gay', 'serious', 'sad','funny']));
+    gImgs.push(createImg('imgs/22.jpg', ['happy','gay']));
+    gImgs.push(createImg('imgs/23.jpg', ['serious','cartoon']));
+    gImgs.push(createImg('imgs/24.jpg', ['funny','cartoon']));
+    gImgs.push(createImg('imgs/25.jpg', ['funny']));
+    gImgs.push(createImg('imgs/26.jpg', ['evil']));
+    gImgs.push(createImg('imgs/27.jpg', ['cartoon','suspicious']));
+    gImgs.push(createImg('imgs/28.jpg', ['suspicious']));
+    gImgs.push(createImg('imgs/29.jpg', ['stoned','serious']));
+    gImgs.push(createImg('imgs/30.jpg', ['funny']));
+    gImgs.push(createImg('imgs/31.jpg', ['gay']));
+    gImgs.push(createImg('imgs/32.jpg', ['funny']));
+    gImgs.push(createImg('imgs/33.jpg', ['funny']));
+    gImgs.push(createImg('imgs/34.jpg', ['cartoon']));
+    gImgs.push(createImg('imgs/35.jpg', ['cartoon']));
+    gImgs.push(createImg('imgs/36.jpg', ['movie']));
+    gImgs.push(createImg('imgs/37.jpg', ['serious']));
+    gImgs.push(createImg('imgs/38.jpg', ['funny','happy']));
+    gImgs.push(createImg('imgs/39.jpg', ['mad','serious']));
+    gImgs.push(createImg('imgs/40.jpg', ['mad','serious','funny']));
 }
 
 function createImg(url, keywords) {

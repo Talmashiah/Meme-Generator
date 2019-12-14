@@ -27,7 +27,7 @@ function renderKeywords() {
     keywords.sort(()=> 0.5 - Math.random());
     for (let i = 0; i < 5; i++) {
         const keyword = keywords[i];
-        strHtml+=`<span class="keyword" style="font-size:${keyword.count*4}px" onclick="onKeywordClick('${keyword.name}')">${keyword.name} </span>`;
+        strHtml+=`<span class="keyword" style="font-size:${keyword.count*2.2}px" onclick="onKeywordClick('${keyword.name}')">${keyword.name} </span>`;
     }
     document.querySelector('.keywords-container').innerHTML = strHtml;
 }
@@ -94,6 +94,10 @@ function onGoToGallery() {
 
 function toggleMenu() {
     document.body.classList.toggle('menu-open');
+}
+
+function closeMenu() {
+    document.body.classList.remove('menu-open');
 }
 
 function onDownloadCanvas(elLink) {
