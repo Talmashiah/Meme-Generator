@@ -431,7 +431,7 @@ footer small {
 
 }
 @media (max-width: 700px) {
-    
+
     nav.container {
         padding: 10px;
     }
@@ -522,7 +522,42 @@ footer small {
     }
 
     #my-canvas {
-        width: 325px;
+        width: 250px;
+        margin-bottom: 18px;
+    }
+
+    .canvas-toolbar {
+        gap: 11px 10px;
+        grid-template-rows: repeat(5, 35px);
+        grid-template-columns: repeat(5, 35px);
+    }
+
+    .toolbar-btn {
+        height: 35px;
+        width: 35px;
+    }
+
+    .line-up-btn {
+        font-size: 12px;
+    }
+
+    .line-down-btn {
+        font-size: 12px;
+    }
+
+    .color-btn {
+        font-size: 19px;
+        padding-top: 6px;
+    }
+
+    .font-select-btn {
+        font-size: 1.1rem;
+    }
+
+    .download-btn {
+        font-size: 12px;
+        padding: 1px;
+        padding-left: 2px;
     }
 }
 
