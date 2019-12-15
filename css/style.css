@@ -522,11 +522,6 @@ footer small {
         font-size: 1.7rem;
     }
 
-    .images-container img {
-        min-width: 100px;
-        min-height: 100px;
-    }
-
     .about-context h2 {
         font-size: 1.1rem;
     }
@@ -581,6 +576,18 @@ footer small {
 }
 
 @media (max-width: 375px) {
+
+    .images-container {
+        height: auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .images-container img {
+        min-width: 100px;
+        min-height: 100px;
+    }
 
     .search-bar .search {
         margin-top: 38px;
