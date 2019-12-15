@@ -19,8 +19,9 @@
                     <img class="main-logo" onclick="onGoToGallery()" src="LOGO/LOGO.png" alt="logo">
                     <button id="menu-btn" class="menu-btn" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
                     <ul class="main-menu clean-list flex">
-                        <li onclick="onGoToGallery(),closeMenu()"><a href="#">Gallery</a></li>
-                        <li onclick="onGoToGallery(),closeMenu()"><a href=#about>About</a></li>
+                        <li onclick="onGoToGallery(); closeMenu()"><a href="#">Gallery</a></li>
+                        <li onclick="onGoToGallery(); closeMenu()"><a href=#about>About</a></li>
+                    </ul>
                 </nav>
             </header>
             <section class="search-bar flex space-between align-center container">
@@ -30,50 +31,48 @@
             </section>
             <main>
                 <div class="images-container container"></div>
-                    <div class="canvas-container container hidden">
-                        <div class="toolbar-container">
-                            <div class="canvas-toolbar">
-                                <input type="text" class="toolbar-text" onkeyup="ontypeTxt(value)"
-                                    placeholder="Add text here">
-                                <button class="line-up-btn toolbar-btn" onclick="onLineUp()">
-                                    <i class="fas fa-arrow-up fa-2x"></i></button>
-                                <button class="line-down-btn toolbar-btn" onclick="onLineDown()">
-                                    <i class="fas fa-arrow-down fa-2x"></i></button>
-                                <input class="delete-line-btn toolbar-btn" type="image" onclick="onDeleteLine()"
-                                    src="icons/trash.png" />
-                                <input class="add-line-btn toolbar-btn" type="image" onclick="onAddLine()"
-                                    src="icons/add.png" />
-                                <input class="align-start-btn toolbar-btn" type="image" onclick="onAlignStart()"
-                                    src="icons/align-to-left.png" />
-                                <input class="align-center-btn toolbar-btn" type="image" onclick="onAlignCenter()"
-                                    src="icons/center-text-alignment.png" />
-                                <input class="align-end-btn toolbar-btn" type="image" onclick="onAlignEnd()"
-                                    src="icons/align-to-right.png" />
-                                <select class="font-select-btn" name="font" id="font-select"
-                                    onchange="onFontChange(value)">
-                                    <option value="impact">impact</option>
-                                    <option value="montserrat">montserrat</option>
-                                    <option value="indie">indie</option>
-                                    <option value="oswald">oswald</option>
-                                    <option value="sulphur">sulphur</option>
-                                </select>
-                                <input class="increase-font-btn toolbar-btn" type="image" onclick="onIncreaseFont()"
-                                    src="icons/increaseFont.png" />
-                                <input class="decrease-font-btn toolbar-btn" type="image" onclick="onDecreaseFont()"
-                                    src="icons/decreaseFont.png" />
-                                <input class="switch-line-btn toolbar-btn" type="image" onclick="onSwitchLine()"
-                                    src="icons/switch-lines.png" />
-                                <label for="color" class="color-btn toolbar-btn"><i
-                                        class="fas fa-palette fa-lg"></i></label>
-                                <input type="color" id="color" name="color" class="hidden"
-                                    onchange="onChangeColor(value)">
-                                <button class="download-btn toolbar-btn"><a href="#" onclick="onDownloadCanvas(this)"
-                                        download="">
-                                        <i class="fas fa-download fa-2x"></i></a></button>
-                            </div>
+                <div class="canvas-container container hidden">
+                    <div class="toolbar-container">
+                        <div class="canvas-toolbar">
+                            <input type="text" class="toolbar-text" onkeyup="ontypeTxt(value)"
+                                placeholder="Add text here">
+                            <button class="line-up-btn toolbar-btn" onclick="onLineUp()">
+                                <i class="fas fa-arrow-up fa-2x"></i></button>
+                            <button class="line-down-btn toolbar-btn" onclick="onLineDown()">
+                                <i class="fas fa-arrow-down fa-2x"></i></button>
+                            <input class="delete-line-btn toolbar-btn" type="image" onclick="onDeleteLine()"
+                                src="icons/trash.png" />
+                            <input class="add-line-btn toolbar-btn" type="image" onclick="onAddLine()"
+                                src="icons/add.png" />
+                            <input class="align-start-btn toolbar-btn" type="image" onclick="onAlignment('start')"
+                                src="icons/align-to-left.png" />
+                            <input class="align-center-btn toolbar-btn" type="image" onclick="onAlignment('center')"
+                                src="icons/center-text-alignment.png" />
+                            <input class="align-end-btn toolbar-btn" type="image" onclick="onAlignment('end')"
+                                src="icons/align-to-right.png" />
+                            <select class="font-select-btn" name="font" id="font-select" onchange="onFontChange(value)">
+                                <option value="impact">impact</option>
+                                <option value="montserrat">montserrat</option>
+                                <option value="indie">indie</option>
+                                <option value="oswald">oswald</option>
+                                <option value="sulphur">sulphur</option>
+                            </select>
+                            <input class="increase-font-btn toolbar-btn" type="image" onclick="onIncreaseFont()"
+                                src="icons/increaseFont.png" />
+                            <input class="decrease-font-btn toolbar-btn" type="image" onclick="onDecreaseFont()"
+                                src="icons/decreaseFont.png" />
+                            <input class="switch-line-btn toolbar-btn" type="image" onclick="onSwitchLine()"
+                                src="icons/switch-lines.png" />
+                            <label for="color" class="color-btn toolbar-btn"><i
+                                    class="fas fa-palette fa-lg"></i></label>
+                            <input type="color" id="color" name="color" class="hidden" onchange="onChangeColor(value)">
+                            <button class="download-btn toolbar-btn"><a href="#" onclick="onDownloadCanvas(this)"
+                                    download="">
+                                    <i class="fas fa-download fa-2x"></i></a></button>
                         </div>
-                        <canvas id="my-canvas" width="500" height="500"></canvas>
                     </div>
+                    <canvas id="my-canvas"></canvas>
+                </div>
             </main>
             <section class="about container" id="about">
                 <div class="about-container flex justify-content">

@@ -176,8 +176,9 @@ nav li {
 
 #my-canvas {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    width: 550px;
-    height: 550px;
+    height: 100%;
+    max-height: 500px;
+    min-height: 400px;
 }
 
 .canvas-container{
@@ -381,9 +382,9 @@ footer small {
 @media (max-width: 1100px) {
 
     #my-canvas {
-        width: 450px; 
-        height: 450px;
-    }
+        height: 100%;
+        max-height: 400px;
+    } 
 
     .search-bar.container {
         flex-direction: column;
@@ -409,7 +410,7 @@ footer small {
     }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 950px) {
 
     .about-container {
         flex-direction: column;
@@ -430,9 +431,6 @@ footer small {
         text-align: center;
         margin-left: 0; 
     }
-}
-
-@media (max-width: 800px) {
 
     .canvas-container {
         display: flex;
@@ -441,8 +439,9 @@ footer small {
     }
 
     #my-canvas {
-        width: 375px;
-        height: 375px;
+        height: 100%;
+        height: 325px;
+        min-height: 250px;
         margin-bottom: 32px;
     }
 
@@ -514,9 +513,6 @@ footer small {
         min-width: 150px;
         min-height: 150px;
     }
-}
-
-@media (max-width: 515px) {
 
     .main-logo {
         height: 2rem;
@@ -544,8 +540,8 @@ footer small {
     }
 
     #my-canvas {
-        width: 275px;
-        height: 275px;
+        height: 225px;
+        min-height: 200px;
         margin-bottom: 18px;
     }
 

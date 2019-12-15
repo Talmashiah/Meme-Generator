@@ -3,53 +3,50 @@ let gCanvas;
 let gCtx;
 
 function init() {
-    loadData();
+    loadMemeData();
     renderImgs();
     renderKeywords();
 }
 
 function renderImgs(isFlitered = false) {
-    if(!isFlitered){
-        var imgs = getImgsToRender();
+    let imgs;
+    if (!isFlitered) {
+        imgs = getImgsToRender();
     } else {
-        var imgs = getFilterImgsToRender();
+        imgs = getFilterImgsToRender();
     }
-    var memes = imgs.map(function (img) {
+    let memes = imgs.map(function (img) {
         return `<img src="${img.url}" alt="meme" data-id="${img.id}" onclick="onImgClick(this)">`
-    })
+    });
 
     document.querySelector('.images-container').innerHTML = memes.join('');
 }
 
 function renderKeywords() {
-    strHtml = '';
-    let keywords = getKeywordsToRender().slice(0, 5);
-    keywords.sort(()=> 0.5 - Math.random());
-    for (let i = 0; i < 5; i++) {
-        const keyword = keywords[i];
-        strHtml+=`<span class="keyword" style="font-size:${keyword.count*2.2}px" onclick="onKeywordClick('${keyword.name}')">${keyword.name} </span>`;
-    }
-    document.querySelector('.keywords-container').innerHTML = strHtml;
+    let keywords = getKeywordsToRender();
+    let keywordsHTML = keywords.map(function (keyword) {
+        return `<span class="keyword" style="font-size:${keyword.count * 2.2}px" onclick="onKeywordClick('${keyword.name}')">${keyword.name} </span>`
+    });
+    document.querySelector('.keywords-container').innerHTML = keywordsHTML.join('');
 }
 
 function renderCanvas(drawBorder = true) {
     let meme = getgMeme();
-    let memeId = meme.selectedImgId;
+    let selectedImgId = meme.selectedImgId;
     let memeTexts = meme.txts;
-    let elArr = document.querySelectorAll(`[data-id='${memeId}']`);
-    if (!elArr || elArr.length === 0) {
+    let elImg = document.querySelector(`[data-id='${selectedImgId}']`);
+    if (!elImg) {
         return;
     }
-    let elImg = elArr[0];
     clearCanvas();
     drawImg(elImg);
     drawTexts(memeTexts, meme.selectedTxtIdx);
     if (drawBorder) drawBorderOnTxt();
 }
 
-function onSearchImgs(value){
+function onSearchImgs(value) {
     filterImgsBySearch(value);
-    if(value){
+    if (value) {
         renderImgs(true);
     } else {
         renderImgs();
@@ -67,11 +64,11 @@ function drawBorderOnTxt() {
     gCtx.lineWidth = "1";
     gCtx.strokeStyle = "black";
     gCtx.fillStyle = "#0019ff14";
-    if(txtObj.align === 'start'){
+    if (txtObj.align === 'start') {
         gCtx.rect(txtObj.locationX - 10, txtObj.locationY - txtHeight + 10, txtWidth, txtHeight);
-    } else if (txtObj.align === 'center'){
+    } else if (txtObj.align === 'center') {
         gCtx.rect(txtObj.locationX - txtWidth / 2, txtObj.locationY - txtHeight + 10, txtWidth, txtHeight);
-    } else{
+    } else {
         gCtx.rect(txtObj.locationX - txtWidth + 10, txtObj.locationY - txtHeight + 10, txtWidth, txtHeight);
     }
     gCtx.fill();
@@ -108,28 +105,19 @@ function onDownloadCanvas(elLink) {
     drawBorderOnTxt();
 }
 
-function onKeywordClick(keyword){
+function onKeywordClick(keyword) {
     filterImgsByKeyword(keyword);
     renderImgs(true);
 }
 
-function onFontChange(fontFamily){
+function onFontChange(fontFamily) {
     setInitialFontFamily(fontFamily);
     renderCanvas();
 }
 
-function onAlignEnd(){
-    setAlignEnd();
-    renderCanvas();
-}
-
-function onAlignCenter(){
-    setAlignCenter();
-    renderCanvas();
-}
-
-function onAlignStart(){
-    setAlignStart();
+function onAlignment(alignment){
+    let CurrCanvasWidth = gCanvas.width;
+    setAlignment(alignment,CurrCanvasWidth);
     renderCanvas();
 }
 
@@ -201,7 +189,7 @@ function drawTexts(txts, currentTxtId) {
 function drawText(txt) {
     let fontFamily = getInitialFontFamily();
     gCtx.fillStyle = txt.color;
-    if(fontFamily === 'impact'){
+    if (fontFamily === 'impact') {
         gCtx.lineWidth = 2;
     } else {
         gCtx.lineWidth = 1;
@@ -223,17 +211,22 @@ function clearCanvas() {
 }
 
 function onImgClick(elImg) {
+    let imgId = +elImg.dataset.id;
     clearTextInput();
     initgMeme();
-    setCanvas();
+    showCanvas();
+    initCanvas();
     moveToGenerator();
-    setgMemeId(elImg);
+    setgMemeId(imgId);
+    resizeCanvas(elImg);
     renderCanvas();
 }
 
-function setCanvas() {
+function showCanvas() {
     let elCanvasContainer = document.querySelector('.canvas-container');
     elCanvasContainer.classList.remove('hidden');
+}
+function initCanvas() {
     gCanvas = document.querySelector('#my-canvas');
     gCtx = gCanvas.getContext('2d');
 }
@@ -250,5 +243,11 @@ function moveToGenerator() {
     elSearchBar.classList.add('hidden');
     elSearchBar.classList.remove('flex');
     elAbout.classList.add('hidden');
+}
+
+function resizeCanvas(elImg) {
+    gCanvas.width = elImg.width;
+    gCanvas.height = elImg.height;
+    setMemeTxtLocation(gCanvas.width,gCanvas.height);
 }
 
